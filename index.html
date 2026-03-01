@@ -859,16 +859,7 @@
     `;
   }
 
-  function handlePurchase() {
-    const name = document.getElementById('ownerName').value;
-    if (!name) {
-      document.getElementById('ownerName').focus();
-      document.getElementById('ownerName').style.borderColor = '#e74c3c';
-      setTimeout(() => document.getElementById('ownerName').style.borderColor = '', 2000);
-      return;
-    }
-    document.getElementById('successOverlay').classList.add('show');
-  }
+
 
   async function handlePurchase() {
     const name = document.getElementById('ownerName').value;
