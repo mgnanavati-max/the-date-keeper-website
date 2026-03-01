@@ -638,6 +638,24 @@
       </div>
 
       <div class="form-group">
+        <label>Planner type</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px">
+          <div id="type-monthly" onclick="setPlannerType('monthly')"
+            style="border:2px solid #1C1917;border-radius:10px;padding:16px;cursor:pointer;background:white">
+            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Monthly</div>
+            <div style="color:#78716C;font-size:0.8rem;margin-bottom:8px">12 calendar pages · ~14 pages total</div>
+            <div style="font-family:Georgia,serif;font-size:1.4rem;color:#C8956C">$18</div>
+          </div>
+          <div id="type-full" onclick="setPlannerType('full')"
+            style="border:2px solid #E8E0D8;border-radius:10px;padding:16px;cursor:pointer;background:white">
+            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Full Year</div>
+            <div style="color:#78716C;font-size:0.8rem;margin-bottom:8px">Monthly + weekly spreads · ~110 pages</div>
+            <div style="font-family:Georgia,serif;font-size:1.4rem;color:#C8956C">$28</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
         <label>Your milestones</label>
         <div class="milestones-list" id="milestonesList">
           <!-- entries added by JS -->
@@ -717,6 +735,14 @@
 </div>
 
 <script>
+  let plannerType = 'monthly';
+
+  function setPlannerType(type) {
+    plannerType = type;
+    document.getElementById('type-monthly').style.border = type === 'monthly' ? '2px solid #1C1917' : '2px solid #E8E0D8';
+    document.getElementById('type-full').style.border = type === 'full' ? '2px solid #1C1917' : '2px solid #E8E0D8';
+  }
+
   let coverImageDataUrl = null;
   let currentOverlay = 'dark';
 
@@ -876,7 +902,7 @@
       const payload = {
         name: name,
         year: parseInt(document.getElementById('plannerYear').value),
-        type: 'monthly',
+        type: plannerType,
         send_email: false,
         milestones: milestones.map(m => ({ label: m.label, date: m.date }))
       };
