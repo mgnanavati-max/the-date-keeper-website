@@ -3,493 +3,185 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yours Truly Planners — Made Just For You</title>
+<title>The Date Keeper — Planners Made Just For You</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --cream: #FAF7F2;
-    --warm-white: #FFFEF9;
-    --ink: #1C1917;
-    --muted: #78716C;
-    --accent: #C8956C;
-    --accent-light: #F0DDD0;
-    --sage: #8A9E8C;
+    --cream: #FAF7F2; --warm-white: #FFFEF9;
+    --ink: #1C1917; --muted: #78716C;
+    --accent: #C8956C; --accent-light: #F0DDD0;
     --border: #E8E0D8;
   }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'DM Sans',sans-serif; background:var(--cream); color:var(--ink); overflow-x:hidden; }
 
   /* NAV */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    padding: 20px 48px;
-    display: flex; justify-content: space-between; align-items: center;
-    background: rgba(250,247,242,0.9);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    letter-spacing: -0.02em;
-  }
-  .logo span { color: var(--accent); font-style: italic; }
-  nav a {
-    text-decoration: none; color: var(--muted);
-    font-size: 0.875rem; font-weight: 500;
-    letter-spacing: 0.04em; text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  nav a:hover { color: var(--ink); }
-  .nav-links { display: flex; gap: 32px; align-items: center; }
-  .nav-cta {
-    background: var(--ink) !important;
-    color: var(--cream) !important;
-    padding: 10px 20px;
-    border-radius: 100px;
-    font-size: 0.8rem !important;
-  }
+  nav { position:fixed; top:0; width:100%; z-index:100; padding:20px 48px; display:flex; justify-content:space-between; align-items:center; background:rgba(250,247,242,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+  .logo { font-family:'Playfair Display',serif; font-size:1.4rem; letter-spacing:-0.02em; }
+  .logo span { color:var(--accent); font-style:italic; }
+  nav a { text-decoration:none; color:var(--muted); font-size:0.875rem; font-weight:500; letter-spacing:0.04em; text-transform:uppercase; transition:color 0.2s; }
+  nav a:hover { color:var(--ink); }
+  .nav-links { display:flex; gap:32px; align-items:center; }
+  .nav-cta { background:var(--ink)!important; color:var(--cream)!important; padding:10px 20px; border-radius:100px; font-size:0.8rem!important; }
 
   /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid; grid-template-columns: 1fr 1fr;
-    padding-top: 80px;
-  }
-  .hero-left {
-    padding: 80px 48px 80px 80px;
-    display: flex; flex-direction: column; justify-content: center;
-  }
-  .eyebrow {
-    font-size: 0.75rem; font-weight: 500;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .eyebrow::before {
-    content: ''; width: 32px; height: 1px;
-    background: var(--accent); display: block;
-  }
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 4vw, 4.2rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin-bottom: 24px;
-  }
-  h1 em { font-style: italic; color: var(--accent); }
-  .hero-desc {
-    font-size: 1.1rem; color: var(--muted);
-    line-height: 1.7; max-width: 460px;
-    margin-bottom: 48px;
-    font-weight: 300;
-  }
-  .hero-actions { display: flex; gap: 16px; align-items: center; }
-  .btn-primary {
-    background: var(--ink); color: var(--cream);
-    padding: 16px 32px; border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem; font-weight: 500;
-    border: none; cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none; display: inline-block;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(28,25,23,0.2); }
-  .btn-ghost {
-    color: var(--ink); font-size: 0.9rem; font-weight: 500;
-    text-decoration: none;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .btn-ghost::after { content: '→'; transition: transform 0.2s; }
-  .btn-ghost:hover::after { transform: translateX(4px); }
+  .hero { min-height:100vh; display:grid; grid-template-columns:1fr 1fr; padding-top:80px; }
+  .hero-left { padding:80px 48px 80px 80px; display:flex; flex-direction:column; justify-content:center; }
+  .eyebrow { font-size:0.75rem; font-weight:500; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:24px; display:flex; align-items:center; gap:12px; }
+  .eyebrow::before { content:''; width:32px; height:1px; background:var(--accent); display:block; }
+  h1 { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,4vw,4.2rem); line-height:1.1; letter-spacing:-0.02em; margin-bottom:24px; }
+  h1 em { font-style:italic; color:var(--accent); }
+  .hero-desc { font-size:1.1rem; color:var(--muted); line-height:1.7; max-width:460px; margin-bottom:48px; font-weight:300; }
+  .hero-actions { display:flex; gap:16px; align-items:center; }
+  .btn-primary { background:var(--ink); color:var(--cream); padding:16px 32px; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:500; border:none; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; text-decoration:none; display:inline-block; }
+  .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(28,25,23,0.2); }
+  .btn-ghost { color:var(--ink); font-size:0.9rem; font-weight:500; text-decoration:none; display:flex; align-items:center; gap:8px; }
+  .btn-ghost::after { content:'→'; transition:transform 0.2s; }
+  .btn-ghost:hover::after { transform:translateX(4px); }
+  .hero-right { background:var(--accent-light); display:flex; align-items:center; justify-content:center; padding:80px 48px; position:relative; overflow:hidden; }
+  .hero-right::before { content:''; position:absolute; top:-100px; right:-100px; width:400px; height:400px; background:radial-gradient(circle,rgba(200,149,108,0.3),transparent 70%); border-radius:50%; }
 
-  .hero-right {
-    background: var(--accent-light);
-    display: flex; align-items: center; justify-content: center;
-    padding: 80px 48px;
-    position: relative; overflow: hidden;
-  }
-  .hero-right::before {
-    content: '';
-    position: absolute; top: -100px; right: -100px;
-    width: 400px; height: 400px;
-    background: radial-gradient(circle, rgba(200,149,108,0.3), transparent 70%);
-    border-radius: 50%;
-  }
-
-  /* PLANNER MOCKUP */
-  .planner-mockup {
-    background: white;
-    width: 320px; max-width: 100%;
-    border-radius: 16px;
-    box-shadow: 0 32px 80px rgba(28,25,23,0.15), 0 8px 24px rgba(28,25,23,0.08);
-    overflow: hidden;
-    position: relative; z-index: 1;
-    transform: rotate(-1deg);
-  }
-  .planner-header {
-    background: var(--ink);
-    padding: 28px;
-    color: var(--cream);
-  }
-  .planner-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.6; margin-bottom: 4px; }
-  .planner-name { font-family: 'Playfair Display', serif; font-size: 1.5rem; }
-  .planner-body { padding: 24px; }
-  .planner-section { margin-bottom: 20px; }
-  .planner-section-title {
-    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 10px;
-  }
-  .milestone-row {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.82rem;
-  }
-  .milestone-row:last-child { border-bottom: none; }
-  .milestone-date { color: var(--accent); font-weight: 500; font-size: 0.78rem; }
-  .milestone-name { color: var(--muted); font-size: 0.72rem; }
+  /* HERO MOCKUP */
+  .planner-mockup { background:white; width:300px; max-width:100%; border-radius:16px; box-shadow:0 32px 80px rgba(28,25,23,0.15); overflow:hidden; position:relative; z-index:1; transform:rotate(-1deg); }
+  .planner-header { background:var(--ink); padding:24px; color:var(--cream); }
+  .planner-year { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; opacity:0.5; margin-bottom:4px; }
+  .planner-name { font-family:'Playfair Display',serif; font-size:1.4rem; }
+  .planner-body { padding:20px; }
+  .planner-section-title { font-size:0.62rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .milestone-row { display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid var(--border); font-size:0.8rem; }
+  .milestone-row:last-child { border-bottom:none; }
+  .milestone-date { color:var(--accent); font-weight:500; font-size:0.75rem; }
 
   /* HOW IT WORKS */
-  .section { padding: 100px 80px; }
-  .section-header { text-align: center; margin-bottom: 64px; }
-  .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3vw, 3rem);
-    letter-spacing: -0.02em; margin-bottom: 16px;
-  }
-  .section-header p { color: var(--muted); font-size: 1.05rem; font-weight: 300; }
+  .section { padding:100px 80px; }
+  .section-header { text-align:center; margin-bottom:64px; }
+  .section-header h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3vw,3rem); letter-spacing:-0.02em; margin-bottom:16px; }
+  .section-header p { color:var(--muted); font-size:1.05rem; font-weight:300; }
+  .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:48px; }
+  .step { text-align:center; }
+  .step-num { width:56px; height:56px; border-radius:50%; background:var(--accent-light); color:var(--accent); font-family:'Playfair Display',serif; font-size:1.4rem; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }
+  .step h3 { font-family:'Playfair Display',serif; font-size:1.15rem; margin-bottom:10px; }
+  .step p { color:var(--muted); font-size:0.9rem; line-height:1.7; font-weight:300; }
+  .divider { border:none; height:1px; background:var(--border); margin:0 80px; }
 
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
-  .step { text-align: center; }
-  .step-num {
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--accent-light); color: var(--accent);
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-  }
-  .step h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; margin-bottom: 10px; }
-  .step p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; font-weight: 300; }
+  /* BUILDER */
+  #builder { padding:100px 80px; background:var(--warm-white); }
+  .builder-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+  .form-section h2 { font-family:'Playfair Display',serif; font-size:2.2rem; margin-bottom:8px; letter-spacing:-0.02em; }
+  .form-section > p { color:var(--muted); font-size:0.95rem; margin-bottom:40px; font-weight:300; line-height:1.7; }
+  .form-group { margin-bottom:24px; }
+  label { display:block; font-size:0.78rem; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; color:var(--muted); margin-bottom:8px; }
+  input[type="text"], input[type="date"], input[type="email"], select { width:100%; padding:14px 16px; border:1.5px solid var(--border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.95rem; background:white; color:var(--ink); transition:border-color 0.2s; outline:none; -webkit-appearance:none; }
+  input:focus, select:focus { border-color:var(--accent); }
 
-  /* DIVIDER */
-  .divider {
-    border: none; height: 1px;
-    background: var(--border); margin: 0 80px;
-  }
+  /* OPTION GRID */
+  .option-grid { display:grid; gap:10px; }
+  .option-grid.cols-2 { grid-template-columns:1fr 1fr; }
+  .option-grid.cols-3 { grid-template-columns:1fr 1fr 1fr; }
+  .option-card { border:2px solid var(--border); border-radius:10px; padding:14px; cursor:pointer; background:white; transition:all 0.15s; text-align:left; }
+  .option-card:hover { border-color:var(--accent); }
+  .option-card.active { border-color:var(--ink); background:var(--warm-white); }
+  .option-card .opt-title { font-weight:600; font-size:0.9rem; margin-bottom:2px; }
+  .option-card .opt-desc { color:var(--muted); font-size:0.75rem; line-height:1.4; }
+  .option-card .opt-price { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--accent); margin-top:6px; }
+  .option-card .opt-swatch { width:100%; height:20px; border-radius:4px; margin-bottom:8px; }
 
-  /* BUILDER SECTION */
-  #builder {
-    padding: 100px 80px;
-    background: var(--warm-white);
-  }
-  .builder-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  /* UPLOAD */
+  .upload-zone { border:2px dashed var(--border); border-radius:12px; padding:28px 20px; text-align:center; cursor:pointer; transition:all 0.2s; background:white; position:relative; overflow:hidden; }
+  .upload-zone:hover, .upload-zone.drag-over { border-color:var(--accent); background:var(--accent-light); }
+  .upload-zone input[type="file"] { position:absolute; inset:0; opacity:0; cursor:pointer; width:100%; height:100%; border:none; padding:0; }
+  .upload-zone p { color:var(--muted); font-size:0.88rem; line-height:1.6; }
+  .upload-zone strong { color:var(--accent); }
+  .upload-preview { position:relative; border-radius:12px; overflow:hidden; aspect-ratio:16/9; display:none; }
+  .upload-preview img { width:100%; height:100%; object-fit:cover; display:block; }
+  .upload-preview-actions { position:absolute; top:10px; right:10px; display:flex; gap:8px; }
+  .btn-change-photo, .btn-remove-photo { background:rgba(28,25,23,0.7); color:white; border:none; cursor:pointer; padding:6px 12px; border-radius:100px; font-family:'DM Sans',sans-serif; font-size:0.75rem; font-weight:500; backdrop-filter:blur(4px); transition:background 0.2s; }
+  .btn-remove-photo:hover { background:rgba(200,50,50,0.8); }
 
-  .form-section h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem; margin-bottom: 8px; letter-spacing: -0.02em;
-  }
-  .form-section > p { color: var(--muted); font-size: 0.95rem; margin-bottom: 40px; font-weight: 300; line-height: 1.7; }
+  /* MILESTONES */
+  .milestones-list { display:flex; flex-direction:column; gap:12px; }
+  .milestone-entry { display:grid; grid-template-columns:1fr 1fr auto; gap:10px; align-items:center; background:var(--cream); padding:12px; border-radius:10px; border:1.5px solid var(--border); animation:fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:none; } }
+  .milestone-entry input { background:white; padding:10px 12px; font-size:0.88rem; }
+  .btn-remove { background:none; border:none; cursor:pointer; color:var(--muted); font-size:1.2rem; padding:6px; border-radius:6px; transition:color 0.2s,background 0.2s; line-height:1; }
+  .btn-remove:hover { color:#e74c3c; background:#fff0ee; }
+  .btn-add { display:flex; align-items:center; gap:8px; background:none; border:1.5px dashed var(--border); padding:12px 16px; border-radius:10px; font-family:'DM Sans',sans-serif; font-size:0.88rem; color:var(--muted); cursor:pointer; width:100%; transition:border-color 0.2s,color 0.2s; margin-top:8px; }
+  .btn-add:hover { border-color:var(--accent); color:var(--accent); }
 
-  .form-group { margin-bottom: 24px; }
-  label {
-    display: block;
-    font-size: 0.78rem; font-weight: 500;
-    letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 8px;
-  }
-  input[type="text"], input[type="date"], input[type="email"], select {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.95rem;
-    background: white;
-    color: var(--ink);
-    transition: border-color 0.2s;
-    outline: none;
-    -webkit-appearance: none;
-  }
-  input:focus, select:focus { border-color: var(--accent); }
-
-  .milestones-list { display: flex; flex-direction: column; gap: 12px; }
-  .milestone-entry {
-    display: grid; grid-template-columns: 1fr 1fr auto;
-    gap: 10px; align-items: center;
-    background: var(--cream);
-    padding: 12px;
-    border-radius: 10px;
-    border: 1.5px solid var(--border);
-    animation: fadeIn 0.3s ease;
-  }
-  @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
-  .milestone-entry input {
-    background: white;
-    padding: 10px 12px;
-    font-size: 0.88rem;
-  }
-  .btn-remove {
-    background: none; border: none; cursor: pointer;
-    color: var(--muted); font-size: 1.2rem;
-    padding: 6px; border-radius: 6px;
-    transition: color 0.2s, background 0.2s;
-    line-height: 1;
-  }
-  .btn-remove:hover { color: #e74c3c; background: #fff0ee; }
-  .btn-add {
-    display: flex; align-items: center; gap: 8px;
-    background: none; border: 1.5px dashed var(--border);
-    padding: 12px 16px; border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.88rem; color: var(--muted);
-    cursor: pointer; width: 100%;
-    transition: border-color 0.2s, color 0.2s;
-    margin-top: 8px;
-  }
-  .btn-add:hover { border-color: var(--accent); color: var(--accent); }
-
-  .price-tag {
-    background: var(--accent-light);
-    border-radius: 12px; padding: 20px 24px;
-    display: flex; justify-content: space-between; align-items: center;
-    margin: 32px 0;
-  }
-  .price-label { font-size: 0.85rem; color: var(--muted); }
-  .price-amount { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent); }
-  .price-note { font-size: 0.75rem; color: var(--muted); margin-top: 2px; }
-
-  .btn-generate {
-    width: 100%;
-    background: var(--accent); color: white;
-    padding: 18px 32px; border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1rem; font-weight: 500;
-    border: none; cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  .btn-generate:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,149,108,0.4); }
-
-  /* IMAGE UPLOAD */
-  .upload-zone {
-    border: 2px dashed var(--border);
-    border-radius: 12px;
-    padding: 32px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s;
-    background: white;
-    position: relative;
-    overflow: hidden;
-  }
-  .upload-zone:hover, .upload-zone.drag-over {
-    border-color: var(--accent);
-    background: var(--accent-light);
-  }
-  .upload-zone input[type="file"] {
-    position: absolute; inset: 0;
-    opacity: 0; cursor: pointer;
-    width: 100%; height: 100%;
-    border: none; padding: 0;
-  }
-  .upload-icon { font-size: 2rem; margin-bottom: 10px; }
-  .upload-zone p { color: var(--muted); font-size: 0.88rem; line-height: 1.6; }
-  .upload-zone strong { color: var(--accent); }
-
-  .upload-preview {
-    position: relative;
-    border-radius: 12px; overflow: hidden;
-    aspect-ratio: 16/9;
-    display: none;
-  }
-  .upload-preview img {
-    width: 100%; height: 100%;
-    object-fit: cover; display: block;
-  }
-  .upload-preview-actions {
-    position: absolute; top: 10px; right: 10px;
-    display: flex; gap: 8px;
-  }
-  .btn-change-photo, .btn-remove-photo {
-    background: rgba(28,25,23,0.7);
-    color: white; border: none; cursor: pointer;
-    padding: 6px 12px; border-radius: 100px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem; font-weight: 500;
-    backdrop-filter: blur(4px);
-    transition: background 0.2s;
-  }
-  .btn-change-photo:hover { background: rgba(28,25,23,0.9); }
-  .btn-remove-photo:hover { background: rgba(200,50,50,0.8); }
-
-  .overlay-options {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    margin-top: 12px;
-  }
-  .overlay-option {
-    flex: 1; min-width: 80px;
-    padding: 8px 4px; border-radius: 8px;
-    border: 2px solid var(--border);
-    cursor: pointer; text-align: center;
-    font-size: 0.72rem; font-weight: 500;
-    color: var(--muted); transition: all 0.15s;
-    background: white;
-  }
-  .overlay-option:hover { border-color: var(--accent); color: var(--ink); }
-  .overlay-option.active { border-color: var(--accent); color: var(--accent); background: var(--accent-light); }
-  .overlay-swatch {
-    width: 28px; height: 18px; border-radius: 4px;
-    margin: 0 auto 5px;
-  }
+  /* PRICE + BUTTON */
+  .price-tag { background:var(--accent-light); border-radius:12px; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; margin:32px 0; }
+  .price-label { font-size:0.85rem; color:var(--muted); }
+  .price-amount { font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--accent); }
+  .price-note { font-size:0.75rem; color:var(--muted); margin-top:2px; }
+  .btn-generate { width:100%; background:var(--accent); color:white; padding:18px 32px; border-radius:12px; font-family:'DM Sans',sans-serif; font-size:1rem; font-weight:500; border:none; cursor:pointer; transition:transform 0.2s,box-shadow 0.2s; }
+  .btn-generate:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(200,149,108,0.4); }
+  .btn-generate:disabled { opacity:0.6; cursor:not-allowed; transform:none; }
 
   /* PREVIEW */
-  .preview-panel {
-    position: sticky; top: 100px;
-  }
-  .preview-label {
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 20px;
-    display: flex; align-items: center; gap: 10px;
-  }
-  .preview-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-
-  .planner-preview {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 24px 64px rgba(28,25,23,0.1);
-    overflow: hidden;
-    transform: rotate(0.5deg);
-  }
-  .preview-cover {
-    background: var(--ink);
-    padding: 40px 36px;
-    color: var(--cream);
-    min-height: 200px;
-    position: relative;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    transition: background-image 0.3s;
-  }
-  .preview-cover-overlay {
-    position: absolute; inset: 0;
-    transition: background 0.3s;
-  }
-  .preview-cover-text {
-    position: relative; z-index: 1;
-  }
-  #preview-year { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.5; margin-bottom: 8px; }
-  #preview-name { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 4px; }
-  #preview-subtitle { font-size: 0.8rem; opacity: 0.5; font-weight: 300; }
-
-  .preview-content { padding: 28px 32px; }
-  .preview-section-title {
-    font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 14px; margin-top: 20px;
-  }
-  .preview-section-title:first-child { margin-top: 0; }
-  .preview-milestone-row {
-    display: flex; justify-content: space-between;
-    padding: 9px 0; border-bottom: 1px solid var(--border);
-    font-size: 0.83rem;
-  }
-  .preview-milestone-row:last-child { border-bottom: none; }
-  .pmr-name { color: var(--ink); }
-  .pmr-date { color: var(--accent); font-weight: 500; font-size: 0.78rem; }
-  .preview-empty {
-    color: var(--muted); font-size: 0.85rem;
-    text-align: center; padding: 32px 0;
-    font-style: italic;
-  }
+  .preview-panel { position:sticky; top:100px; }
+  .preview-label { font-size:0.72rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-bottom:20px; display:flex; align-items:center; gap:10px; }
+  .preview-label::after { content:''; flex:1; height:1px; background:var(--border); }
+  .planner-preview { background:white; border-radius:20px; box-shadow:0 24px 64px rgba(28,25,23,0.1); overflow:hidden; transform:rotate(0.5deg); }
+  .preview-cover { padding:40px 36px; color:var(--cream); min-height:180px; position:relative; overflow:hidden; background-size:cover; background-position:center; transition:background 0.3s; }
+  .preview-cover-overlay { position:absolute; inset:0; transition:background 0.3s; }
+  .preview-cover-text { position:relative; z-index:1; }
+  #preview-year { font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase; opacity:0.5; margin-bottom:8px; }
+  #preview-name { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:4px; }
+  #preview-subtitle { font-size:0.8rem; opacity:0.5; font-weight:300; }
+  .preview-content { padding:28px 32px; }
+  .preview-section-title { font-size:0.62rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; margin-top:20px; }
+  .preview-section-title:first-child { margin-top:0; }
+  .preview-milestone-row { display:flex; justify-content:space-between; padding:9px 0; border-bottom:1px solid var(--border); font-size:0.83rem; }
+  .preview-milestone-row:last-child { border-bottom:none; }
+  .pmr-date { color:var(--accent); font-weight:500; font-size:0.78rem; }
+  .preview-empty { color:var(--muted); font-size:0.85rem; text-align:center; padding:32px 0; font-style:italic; }
 
   /* TESTIMONIALS */
-  .testimonials {
-    padding: 100px 80px;
-    background: var(--ink);
-    color: var(--cream);
-  }
-  .testimonials .section-header h2 { color: var(--cream); }
-  .testimonials .section-header p { color: rgba(250,247,242,0.5); }
-  .testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .testi-card {
-    background: rgba(250,247,242,0.05);
-    border: 1px solid rgba(250,247,242,0.08);
-    border-radius: 16px; padding: 28px;
-  }
-  .testi-stars { color: var(--accent); font-size: 0.85rem; margin-bottom: 14px; }
-  .testi-text { font-size: 0.9rem; line-height: 1.7; font-weight: 300; opacity: 0.8; margin-bottom: 20px; font-style: italic; }
-  .testi-author { font-size: 0.8rem; font-weight: 500; opacity: 0.6; }
+  .testimonials { padding:100px 80px; background:var(--ink); color:var(--cream); }
+  .testimonials .section-header h2 { color:var(--cream); }
+  .testimonials .section-header p { color:rgba(250,247,242,0.5); }
+  .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; }
+  .testi-card { background:rgba(250,247,242,0.05); border:1px solid rgba(250,247,242,0.08); border-radius:16px; padding:28px; }
+  .testi-stars { color:var(--accent); font-size:0.85rem; margin-bottom:14px; }
+  .testi-text { font-size:0.9rem; line-height:1.7; font-weight:300; opacity:0.8; margin-bottom:20px; font-style:italic; }
+  .testi-author { font-size:0.8rem; font-weight:500; opacity:0.6; }
 
   /* FOOTER */
-  footer {
-    padding: 48px 80px;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; }
-  .footer-logo span { color: var(--accent); font-style: italic; }
-  footer p { color: var(--muted); font-size: 0.82rem; }
+  footer { padding:48px 80px; border-top:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+  .footer-logo { font-family:'Playfair Display',serif; font-size:1.2rem; }
+  .footer-logo span { color:var(--accent); font-style:italic; }
+  footer p { color:var(--muted); font-size:0.82rem; }
 
-  /* SUCCESS STATE */
-  .success-overlay {
-    display: none;
-    position: fixed; inset: 0; z-index: 200;
-    background: rgba(28,25,23,0.6);
-    backdrop-filter: blur(8px);
-    align-items: center; justify-content: center;
-  }
-  .success-overlay.show { display: flex; }
-  .success-card {
-    background: white; border-radius: 24px;
-    padding: 48px; max-width: 440px; width: 90%;
-    text-align: center;
-    animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-  @keyframes popIn { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-  .success-icon { font-size: 3rem; margin-bottom: 20px; }
-  .success-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 12px; }
-  .success-card p { color: var(--muted); font-size: 0.95rem; line-height: 1.7; margin-bottom: 28px; }
-  .btn-close {
-    background: var(--ink); color: var(--cream);
-    padding: 14px 28px; border-radius: 100px;
-    border: none; cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem; font-weight: 500;
-  }
+  /* SUCCESS */
+  .success-overlay { display:none; position:fixed; inset:0; z-index:200; background:rgba(28,25,23,0.6); backdrop-filter:blur(8px); align-items:center; justify-content:center; }
+  .success-overlay.show { display:flex; }
+  .success-card { background:white; border-radius:24px; padding:48px; max-width:440px; width:90%; text-align:center; animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1); }
+  @keyframes popIn { from { opacity:0; transform:scale(0.8); } to { opacity:1; transform:scale(1); } }
+  .success-icon { font-size:3rem; margin-bottom:20px; }
+  .success-card h3 { font-family:'Playfair Display',serif; font-size:1.8rem; margin-bottom:12px; }
+  .success-card p { color:var(--muted); font-size:0.95rem; line-height:1.7; margin-bottom:28px; }
+  .btn-close { background:var(--ink); color:var(--cream); padding:14px 28px; border-radius:100px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:500; }
 
-  @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 60px 32px; }
-    .section, #builder, .testimonials { padding: 60px 32px; }
-    .steps { grid-template-columns: 1fr; gap: 32px; }
-    .builder-grid { grid-template-columns: 1fr; }
-    .preview-panel { display: none; }
-    .testi-grid { grid-template-columns: 1fr; }
-    nav { padding: 16px 24px; }
-    footer { padding: 32px; flex-direction: column; gap: 12px; text-align: center; }
-    .divider { margin: 0 32px; }
-    .nav-links { gap: 16px; }
+  @media(max-width:900px) {
+    .hero { grid-template-columns:1fr; }
+    .hero-right { display:none; }
+    .hero-left { padding:60px 32px; }
+    .section, #builder, .testimonials { padding:60px 32px; }
+    .steps { grid-template-columns:1fr; gap:32px; }
+    .builder-grid { grid-template-columns:1fr; }
+    .preview-panel { display:none; }
+    .testi-grid { grid-template-columns:1fr; }
+    nav { padding:16px 24px; }
+    footer { padding:32px; flex-direction:column; gap:12px; text-align:center; }
+    .divider { margin:0 32px; }
+    .option-grid.cols-3 { grid-template-columns:1fr 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="logo">Yours <span>Truly</span></div>
+  <div class="logo">The Date <span>Keeper</span></div>
   <div class="nav-links">
     <a href="#how">How it works</a>
     <a href="#builder" class="nav-cta">Build yours →</a>
@@ -501,7 +193,7 @@
   <div class="hero-left">
     <div class="eyebrow">Personalized planners</div>
     <h1>A planner built around <em>your</em> life</h1>
-    <p class="hero-desc">Every birthday, anniversary, and milestone that matters to you — woven into a beautifully designed planner that's printed and delivered just for you.</p>
+    <p class="hero-desc">Every birthday, anniversary, and milestone that matters to you — woven into a beautifully designed planner in your colors, your size, your style.</p>
     <div class="hero-actions">
       <a href="#builder" class="btn-primary">Create your planner</a>
       <a href="#how" class="btn-ghost">See how it works</a>
@@ -510,37 +202,15 @@
   <div class="hero-right">
     <div class="planner-mockup">
       <div class="planner-header">
-        <div class="planner-year">2025 Annual Planner</div>
+        <div class="planner-year">2026 Annual Planner</div>
         <div class="planner-name">Sarah's Year</div>
       </div>
       <div class="planner-body">
-        <div class="planner-section">
-          <div class="planner-section-title">Birthdays</div>
-          <div class="milestone-row">
-            <div>
-              <div>Mom</div>
-              <div class="milestone-name">Don't forget the flowers!</div>
-            </div>
-            <div class="milestone-date">Mar 12</div>
-          </div>
-          <div class="milestone-row">
-            <div>
-              <div>Jake</div>
-              <div class="milestone-name">Brother · turns 30!</div>
-            </div>
-            <div class="milestone-date">Jul 8</div>
-          </div>
-        </div>
-        <div class="planner-section">
-          <div class="planner-section-title">Anniversaries</div>
-          <div class="milestone-row">
-            <div>
-              <div>Wedding Anniversary</div>
-              <div class="milestone-name">5 years ♥</div>
-            </div>
-            <div class="milestone-date">Sep 24</div>
-          </div>
-        </div>
+        <div class="planner-section-title">Birthdays</div>
+        <div class="milestone-row"><span>Mom</span><span class="milestone-date">Mar 12</span></div>
+        <div class="milestone-row"><span>Jake · turns 30!</span><span class="milestone-date">Jul 8</span></div>
+        <div style="margin-top:14px" class="planner-section-title">Anniversaries</div>
+        <div class="milestone-row"><span>Wedding Anniversary</span><span class="milestone-date">Sep 24</span></div>
       </div>
     </div>
   </div>
@@ -552,24 +222,13 @@
 <section class="section" id="how">
   <div class="section-header">
     <h2>Simple as it should be</h2>
-    <p>Three steps to a planner that finally feels like yours</p>
+    <p>Four steps to a planner that finally feels like yours</p>
   </div>
   <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Tell us what matters</h3>
-      <p>Add the birthdays, anniversaries, and personal milestones that you never want to forget. As many as you like.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>We design it for you</h3>
-      <p>Your dates are woven into a beautifully formatted annual planner with reminders, monthly views, and notes pages.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Download & print</h3>
-      <p>Receive a print-ready PDF instantly. Print at home or at your local print shop — it's your planner to keep forever.</p>
-    </div>
+    <div class="step"><div class="step-num">1</div><h3>Choose your style</h3><p>Pick your color theme, paper size, and planner format — monthly or full year with weekly spreads.</p></div>
+    <div class="step"><div class="step-num">2</div><h3>Add your dates</h3><p>Enter every birthday, anniversary, and milestone that matters. Add a personal cover photo too.</p></div>
+    <div class="step"><div class="step-num">3</div><h3>Preview live</h3><p>Watch your planner come to life in real time as you fill it in. Every choice updates the preview instantly.</p></div>
+    <div class="step"><div class="step-num">4</div><h3>Download & print</h3><p>Get a print-ready PDF instantly. Print at home or at your local print shop with 3-hole punch.</p></div>
   </div>
 </section>
 
@@ -580,54 +239,143 @@
   <div class="builder-grid">
     <div class="form-section">
       <h2>Build your planner</h2>
-      <p>Fill in your details below and watch your personalized planner come to life in real time.</p>
+      <p>Every choice updates your preview in real time.</p>
 
+      <!-- COLOR THEME -->
+      <div class="form-group">
+        <label>Color theme</label>
+        <div class="option-grid cols-3" id="themeGrid">
+          <div class="option-card active" onclick="setTheme('terracotta')">
+            <div class="opt-swatch" style="background:linear-gradient(135deg,#C8956C,#F0DDD0)"></div>
+            <div class="opt-title">Terracotta</div>
+            <div class="opt-desc">Warm & earthy</div>
+          </div>
+          <div class="option-card" onclick="setTheme('sage')">
+            <div class="opt-swatch" style="background:linear-gradient(135deg,#8A9E8C,#D4E0D5)"></div>
+            <div class="opt-title">Sage</div>
+            <div class="opt-desc">Soft & natural</div>
+          </div>
+          <div class="option-card" onclick="setTheme('navy')">
+            <div class="opt-swatch" style="background:linear-gradient(135deg,#1B3A5C,#D0DCE8)"></div>
+            <div class="opt-title">Navy</div>
+            <div class="opt-desc">Classic & bold</div>
+          </div>
+          <div class="option-card" onclick="setTheme('blush')">
+            <div class="opt-swatch" style="background:linear-gradient(135deg,#D4A0A0,#F7E8E8)"></div>
+            <div class="opt-title">Blush</div>
+            <div class="opt-desc">Soft & romantic</div>
+          </div>
+          <div class="option-card" onclick="setTheme('midnight')">
+            <div class="opt-swatch" style="background:linear-gradient(135deg,#1a1a2e,#4a4a6a)"></div>
+            <div class="opt-title">Midnight</div>
+            <div class="opt-desc">Dark & moody</div>
+          </div>
+          <div class="option-card" onclick="setTheme('classic')">
+            <div class="opt-swatch" style="background:linear-gradient(135deg,#1C1917,#E8E0D8)"></div>
+            <div class="opt-title">Classic</div>
+            <div class="opt-desc">Clean B&W</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAPER SIZE -->
+      <div class="form-group">
+        <label>Paper size</label>
+        <div class="option-grid cols-2" id="sizeGrid">
+          <div class="option-card" onclick="setSize('pocket')">
+            <div class="opt-title">Pocket</div>
+            <div class="opt-desc">3.2" × 4.7" · Purse-friendly</div>
+            <div class="opt-price" id="price-pocket">from $16</div>
+          </div>
+          <div class="option-card" onclick="setSize('personal')">
+            <div class="opt-title">Personal</div>
+            <div class="opt-desc">3.7" × 6.7" · Filofax size</div>
+            <div class="opt-price" id="price-personal">from $16</div>
+          </div>
+          <div class="option-card" onclick="setSize('a5')">
+            <div class="opt-title">A5</div>
+            <div class="opt-desc">5.8" × 8.3" · Most popular</div>
+            <div class="opt-price" id="price-a5">from $18</div>
+          </div>
+          <div class="option-card active" onclick="setSize('half')">
+            <div class="opt-title">Half Letter</div>
+            <div class="opt-desc">5.5" × 8.5" · Classic binder</div>
+            <div class="opt-price" id="price-half">from $18</div>
+          </div>
+          <div class="option-card" onclick="setSize('letter')">
+            <div class="opt-title">Letter</div>
+            <div class="opt-desc">8.5" × 11" · Standard printer</div>
+            <div class="opt-price" id="price-letter">from $22</div>
+          </div>
+          <div class="option-card" onclick="setSize('a4')">
+            <div class="opt-title">A4</div>
+            <div class="opt-desc">8.3" × 11.7" · European</div>
+            <div class="opt-price" id="price-a4">from $22</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PLANNER TYPE -->
+      <div class="form-group">
+        <label>Planner type</label>
+        <div class="option-grid cols-2" id="typeGrid">
+          <div class="option-card active" onclick="setPlannerType('monthly')" id="type-monthly">
+            <div class="opt-title">Monthly</div>
+            <div class="opt-desc">12 calendar pages · ~14 pages total</div>
+            <div class="opt-price" id="price-display">$18</div>
+          </div>
+          <div class="option-card" onclick="setPlannerType('full')" id="type-full">
+            <div class="opt-title">Full Year</div>
+            <div class="opt-desc">Monthly + weekly spreads · ~110 pages</div>
+            <div class="opt-price" id="price-display-full">$28</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COVER PHOTO -->
       <div class="form-group">
         <label>Cover photo <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--accent)">— optional</span></label>
-
         <div class="upload-zone" id="uploadZone">
           <input type="file" id="coverImageInput" accept="image/*" onchange="handleImageUpload(event)">
-          <div class="upload-icon">🖼️</div>
+          <div style="font-size:2rem;margin-bottom:10px">🖼️</div>
           <p><strong>Click to upload</strong> or drag & drop<br>JPG, PNG, HEIC · Max 10MB</p>
         </div>
-
         <div class="upload-preview" id="uploadPreview">
           <img id="uploadedImg" src="" alt="Cover photo">
           <div class="upload-preview-actions">
-            <button class="btn-change-photo" onclick="document.getElementById('coverImageInput2').click()">Change photo</button>
+            <button class="btn-change-photo" onclick="document.getElementById('coverImageInput2').click()">Change</button>
             <input type="file" id="coverImageInput2" accept="image/*" style="display:none" onchange="handleImageUpload(event)">
             <button class="btn-remove-photo" onclick="removePhoto()">Remove</button>
           </div>
         </div>
-
-        <div id="overlayOptions" style="display:none">
-          <label style="margin-top:14px;margin-bottom:8px;display:block">Cover overlay style</label>
-          <div class="overlay-options">
-            <div class="overlay-option active" onclick="setOverlay('dark')" id="overlay-dark">
-              <div class="overlay-swatch" style="background:rgba(28,25,23,0.55)"></div>
-              Dark
+        <div id="overlayOptions" style="display:none;margin-top:12px">
+          <label style="margin-bottom:8px;display:block">Photo overlay</label>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
+            <div class="option-card active" onclick="setOverlay('dark')" id="overlay-dark" style="padding:10px;text-align:center">
+              <div style="width:100%;height:14px;border-radius:3px;background:rgba(28,25,23,0.55);margin-bottom:6px"></div>
+              <div style="font-size:0.72rem;font-weight:500">Dark</div>
             </div>
-            <div class="overlay-option" onclick="setOverlay('warm')" id="overlay-warm">
-              <div class="overlay-swatch" style="background:rgba(200,149,108,0.55)"></div>
-              Warm
+            <div class="option-card" onclick="setOverlay('warm')" id="overlay-warm" style="padding:10px;text-align:center">
+              <div style="width:100%;height:14px;border-radius:3px;background:rgba(200,149,108,0.55);margin-bottom:6px"></div>
+              <div style="font-size:0.72rem;font-weight:500">Warm</div>
             </div>
-            <div class="overlay-option" onclick="setOverlay('sage')" id="overlay-sage">
-              <div class="overlay-swatch" style="background:rgba(138,158,140,0.55)"></div>
-              Sage
+            <div class="option-card" onclick="setOverlay('sage')" id="overlay-sage" style="padding:10px;text-align:center">
+              <div style="width:100%;height:14px;border-radius:3px;background:rgba(138,158,140,0.55);margin-bottom:6px"></div>
+              <div style="font-size:0.72rem;font-weight:500">Sage</div>
             </div>
-            <div class="overlay-option" onclick="setOverlay('none')" id="overlay-none">
-              <div class="overlay-swatch" style="background:linear-gradient(transparent,rgba(0,0,0,0.6))"></div>
-              Fade
+            <div class="option-card" onclick="setOverlay('fade')" id="overlay-fade" style="padding:10px;text-align:center">
+              <div style="width:100%;height:14px;border-radius:3px;background:linear-gradient(transparent,rgba(0,0,0,0.6));margin-bottom:6px"></div>
+              <div style="font-size:0.72rem;font-weight:500">Fade</div>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- NAME + YEAR -->
       <div class="form-group">
         <label>Your name (appears on cover)</label>
         <input type="text" id="ownerName" placeholder="e.g. Sarah Johnson" oninput="updatePreview()">
       </div>
-
       <div class="form-group">
         <label>Planner year</label>
         <select id="plannerYear" onchange="updatePreview()">
@@ -637,43 +385,25 @@
         </select>
       </div>
 
-      <div class="form-group">
-        <label>Planner type</label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px">
-          <div id="type-monthly" onclick="setPlannerType('monthly')"
-            style="border:2px solid #1C1917;border-radius:10px;padding:16px;cursor:pointer;background:white">
-            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Monthly</div>
-            <div style="color:#78716C;font-size:0.8rem;margin-bottom:8px">12 calendar pages · ~14 pages total</div>
-            <div style="font-family:Georgia,serif;font-size:1.4rem;color:#C8956C">$18</div>
-          </div>
-          <div id="type-full" onclick="setPlannerType('full')"
-            style="border:2px solid #E8E0D8;border-radius:10px;padding:16px;cursor:pointer;background:white">
-            <div style="font-weight:600;font-size:0.95rem;margin-bottom:4px">Full Year</div>
-            <div style="color:#78716C;font-size:0.8rem;margin-bottom:8px">Monthly + weekly spreads · ~110 pages</div>
-            <div style="font-family:Georgia,serif;font-size:1.4rem;color:#C8956C">$28</div>
-          </div>
-        </div>
-      </div>
-
+      <!-- MILESTONES -->
       <div class="form-group">
         <label>Your milestones</label>
-        <div class="milestones-list" id="milestonesList">
-          <!-- entries added by JS -->
-        </div>
+        <div class="milestones-list" id="milestonesList"></div>
         <button class="btn-add" onclick="addMilestone()">+ Add a birthday, anniversary, or milestone</button>
       </div>
 
+      <!-- PRICE + CTA -->
       <div class="price-tag">
         <div>
           <div class="price-label">One-time purchase</div>
-          <div class="price-note">Instant PDF download · Print anywhere</div>
+          <div class="price-note" id="priceNote">Half Letter · Monthly · Instant PDF download</div>
         </div>
-        <div class="price-amount">$18</div>
+        <div class="price-amount" id="finalPrice">$18</div>
       </div>
-
       <button class="btn-generate" onclick="handlePurchase()">Get my planner →</button>
     </div>
 
+    <!-- LIVE PREVIEW -->
     <div class="preview-panel">
       <div class="preview-label">Live preview</div>
       <div class="planner-preview">
@@ -697,242 +427,282 @@
 <section class="testimonials">
   <div class="section-header">
     <h2>People love their planners</h2>
-    <p>Join thousands of people who finally have a planner that feels like theirs</p>
+    <p>Join thousands who finally have a planner that feels like theirs</p>
   </div>
   <div class="testi-grid">
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"I've tried every planner on the market. This is the first one where I actually open it every morning because it has everything that matters to me right there."</p>
-      <div class="testi-author">— Emily R., teacher</div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"Bought one for myself, then immediately ordered five more as Christmas gifts. Everyone was obsessed. It's such a thoughtful idea."</p>
-      <div class="testi-author">— Marcus T., small business owner</div>
-    </div>
-    <div class="testi-card">
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">"I never remembered my cousins' birthdays. Now I have zero excuses. The planner is beautiful and I actually use it. Worth every penny."</p>
-      <div class="testi-author">— Priya N., designer</div>
-    </div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I've tried every planner on the market. This is the first one where I actually open it every morning because everything that matters to me is right there."</p><div class="testi-author">— Emily R., teacher</div></div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"Bought one for myself, then immediately ordered five more as Christmas gifts. Everyone was obsessed. Such a thoughtful idea."</p><div class="testi-author">— Marcus T., small business owner</div></div>
+    <div class="testi-card"><div class="testi-stars">★★★★★</div><p class="testi-text">"I never remembered my cousins' birthdays. Now I have zero excuses. The planner is beautiful and I actually use it. Worth every penny."</p><div class="testi-author">— Priya N., designer</div></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Yours <span>Truly</span></div>
-  <p>© 2026 Yours Truly Planners · Made with care</p>
+  <div class="footer-logo">The Date <span>Keeper</span></div>
+  <p>© 2026 The Date Keeper · Made with care</p>
 </footer>
 
-<!-- SUCCESS OVERLAY -->
 <div class="success-overlay" id="successOverlay">
   <div class="success-card">
     <div class="success-icon">🎉</div>
     <h3>Your planner is ready!</h3>
-    <p>In a real store, your personalized planner PDF would now be downloading. This is a prototype — but the full version is closer than you think!</p>
-    <button class="btn-close" onclick="document.getElementById('successOverlay').classList.remove('show')">Close preview</button>
+    <p>Your personalized planner PDF is downloading now. Print it at home or take it to any print shop and ask for 3-hole punch!</p>
+    <button class="btn-close" onclick="document.getElementById('successOverlay').classList.remove('show')">Done</button>
   </div>
 </div>
 
 <script>
-  let plannerType = 'monthly';
+// ── State ──────────────────────────────────────────────────────────────────
+const THEMES = {
+  terracotta: { accent:'#C8956C', accentLight:'#F0DDD0', cover:'#1C1917', previewBg:'#C8956C' },
+  sage:       { accent:'#8A9E8C', accentLight:'#D4E0D5', cover:'#2D3B2E', previewBg:'#8A9E8C' },
+  navy:       { accent:'#1B3A5C', accentLight:'#D0DCE8', cover:'#1B3A5C', previewBg:'#1B3A5C' },
+  blush:      { accent:'#C47C7C', accentLight:'#F7E8E8', cover:'#3D1F1F', previewBg:'#C47C7C' },
+  midnight:   { accent:'#7B7BC4', accentLight:'#E8E8F7', cover:'#1a1a2e', previewBg:'#1a1a2e' },
+  classic:    { accent:'#1C1917', accentLight:'#E8E0D8', cover:'#1C1917', previewBg:'#1C1917' },
+};
+const BASE_PRICES = { pocket:16, personal:16, a5:18, half:18, letter:22, a4:22 };
+const SIZE_LABELS  = { pocket:'Pocket', personal:'Personal', a5:'A5', half:'Half Letter', letter:'Letter', a4:'A4' };
 
-  function setPlannerType(type) {
-    plannerType = type;
-    document.getElementById('type-monthly').style.border = type === 'monthly' ? '2px solid #1C1917' : '2px solid #E8E0D8';
-    document.getElementById('type-full').style.border = type === 'full' ? '2px solid #1C1917' : '2px solid #E8E0D8';
+let currentTheme   = 'terracotta';
+let currentSize    = 'half';
+let plannerType    = 'monthly';
+let coverImageDataUrl = null;
+let coverImageFile    = null;
+let currentOverlay = 'dark';
+const milestones   = [];
+
+const overlayStyles = {
+  dark: 'rgba(28,25,23,0.55)',
+  warm: 'rgba(200,149,108,0.55)',
+  sage: 'rgba(138,158,140,0.55)',
+  fade: 'linear-gradient(to top,rgba(0,0,0,0.65) 0%,transparent 60%)'
+};
+
+// ── Theme ──────────────────────────────────────────────────────────────────
+function setTheme(theme) {
+  currentTheme = theme;
+  document.querySelectorAll('#themeGrid .option-card').forEach(el => el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  applyThemeToPreview();
+  updatePrice();
+}
+
+function applyThemeToPreview() {
+  const t = THEMES[currentTheme];
+  const cover = document.getElementById('previewCover');
+  if (!coverImageDataUrl) {
+    cover.style.background = t.cover;
   }
+  document.getElementById('previewOverlay').style.setProperty('--theme-accent', t.accent);
+  document.querySelectorAll('.preview-section-title').forEach(el => el.style.color = t.accent);
+  document.querySelectorAll('.pmr-date').forEach(el => el.style.color = t.accent);
+}
 
-  let coverImageDataUrl = null;
-  let currentOverlay = 'dark';
+// ── Size ───────────────────────────────────────────────────────────────────
+function setSize(size) {
+  currentSize = size;
+  document.querySelectorAll('#sizeGrid .option-card').forEach(el => el.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  updatePrice();
+}
 
-  const overlayStyles = {
-    dark: 'rgba(28,25,23,0.55)',
-    warm: 'rgba(200,149,108,0.55)',
-    sage: 'rgba(138,158,140,0.55)',
-    none: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%)'
+// ── Type ───────────────────────────────────────────────────────────────────
+function setPlannerType(type) {
+  plannerType = type;
+  document.querySelectorAll('#typeGrid .option-card').forEach(el => el.classList.remove('active'));
+  document.getElementById('type-' + type).classList.add('active');
+  updatePrice();
+}
+
+// ── Price ──────────────────────────────────────────────────────────────────
+function updatePrice() {
+  const base  = BASE_PRICES[currentSize] || 18;
+  const monthly = base;
+  const full    = base + 10;
+  const current = plannerType === 'full' ? full : monthly;
+
+  document.getElementById('price-display').textContent     = '$' + monthly;
+  document.getElementById('price-display-full').textContent = '$' + full;
+  document.getElementById('finalPrice').textContent         = '$' + current;
+
+  const typeLabel = plannerType === 'full' ? 'Full Year' : 'Monthly';
+  document.getElementById('priceNote').textContent =
+    `${SIZE_LABELS[currentSize]} · ${typeLabel} · Instant PDF download`;
+}
+
+// ── Photo upload ───────────────────────────────────────────────────────────
+function handleImageUpload(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  coverImageFile = file;
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    coverImageDataUrl = e.target.result;
+    document.getElementById('uploadedImg').src = coverImageDataUrl;
+    document.getElementById('uploadZone').style.display    = 'none';
+    document.getElementById('uploadPreview').style.display = 'block';
+    document.getElementById('overlayOptions').style.display = 'block';
+    updatePreview();
   };
+  reader.readAsDataURL(file);
+}
 
-  function handleImageUpload(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      coverImageDataUrl = e.target.result;
-      document.getElementById('uploadedImg').src = coverImageDataUrl;
-      document.getElementById('uploadZone').style.display = 'none';
-      document.getElementById('uploadPreview').style.display = 'block';
-      document.getElementById('overlayOptions').style.display = 'block';
-      updatePreview();
-    };
-    reader.readAsDataURL(file);
+function removePhoto() {
+  coverImageDataUrl = null;
+  coverImageFile    = null;
+  document.getElementById('uploadZone').style.display    = 'block';
+  document.getElementById('uploadPreview').style.display = 'none';
+  document.getElementById('overlayOptions').style.display = 'none';
+  document.getElementById('coverImageInput').value = '';
+  updatePreview();
+}
+
+function setOverlay(type) {
+  currentOverlay = type;
+  document.querySelectorAll('[id^="overlay-"]').forEach(el => el.classList.remove('active'));
+  document.getElementById('overlay-' + type).classList.add('active');
+  updatePreview();
+}
+
+// Drag and drop
+const uploadZone = document.getElementById('uploadZone');
+uploadZone.addEventListener('dragover',  e => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
+uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
+uploadZone.addEventListener('drop', e => {
+  e.preventDefault(); uploadZone.classList.remove('drag-over');
+  const file = e.dataTransfer.files[0];
+  if (file && file.type.startsWith('image/')) handleImageUpload({ target:{ files:[file] } });
+});
+
+// ── Milestones ─────────────────────────────────────────────────────────────
+function addMilestone(label='', date='') {
+  const id = Date.now();
+  milestones.push({ id, label, date });
+  renderMilestones(); updatePreview();
+}
+function removeMilestone(id) {
+  const idx = milestones.findIndex(m => m.id === id);
+  if (idx > -1) milestones.splice(idx, 1);
+  renderMilestones(); updatePreview();
+}
+function renderMilestones() {
+  document.getElementById('milestonesList').innerHTML = milestones.map(m => `
+    <div class="milestone-entry" id="entry-${m.id}">
+      <input type="text" placeholder="e.g. Mom's Birthday" value="${m.label}"
+        oninput="updateMilestone(${m.id},'label',this.value)">
+      <input type="date" value="${m.date}"
+        oninput="updateMilestone(${m.id},'date',this.value)">
+      <button class="btn-remove" onclick="removeMilestone(${m.id})">×</button>
+    </div>`).join('');
+}
+function updateMilestone(id, field, value) {
+  const m = milestones.find(m => m.id === id);
+  if (m) { m[field] = value; updatePreview(); }
+}
+function formatDate(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('en-US', { month:'short', day:'numeric' });
+}
+
+// ── Preview ────────────────────────────────────────────────────────────────
+function updatePreview() {
+  const name = document.getElementById('ownerName').value || 'Your Name Here';
+  const year = document.getElementById('plannerYear').value;
+  const t    = THEMES[currentTheme];
+
+  document.getElementById('preview-name').textContent = name !== 'Your Name Here' ? name + "'s Year" : name;
+  document.getElementById('preview-year').textContent = year + ' Annual Planner';
+
+  const cover   = document.getElementById('previewCover');
+  const overlay = document.getElementById('previewOverlay');
+  if (coverImageDataUrl) {
+    cover.style.backgroundImage = `url(${coverImageDataUrl})`;
+    cover.style.background = '';
+    overlay.style.background = overlayStyles[currentOverlay];
+  } else {
+    cover.style.backgroundImage = 'none';
+    cover.style.background = t.cover;
+    overlay.style.background = 'none';
   }
 
-  function removePhoto() {
-    coverImageDataUrl = null;
-    document.getElementById('uploadZone').style.display = 'block';
-    document.getElementById('uploadPreview').style.display = 'none';
-    document.getElementById('overlayOptions').style.display = 'none';
-    document.getElementById('coverImageInput').value = '';
-    updatePreview();
+  const content = document.getElementById('preview-content');
+  const filled  = milestones.filter(m => m.label || m.date);
+  if (!filled.length) {
+    content.innerHTML = '<div class="preview-empty">Your milestones will appear here as you add them…</div>';
+    return;
   }
-
-  function setOverlay(type) {
-    currentOverlay = type;
-    document.querySelectorAll('.overlay-option').forEach(el => el.classList.remove('active'));
-    document.getElementById('overlay-' + type).classList.add('active');
-    updatePreview();
-  }
-
-  // Drag and drop
-  const uploadZone = document.getElementById('uploadZone');
-  uploadZone.addEventListener('dragover', (e) => { e.preventDefault(); uploadZone.classList.add('drag-over'); });
-  uploadZone.addEventListener('dragleave', () => uploadZone.classList.remove('drag-over'));
-  uploadZone.addEventListener('drop', (e) => {
-    e.preventDefault();
-    uploadZone.classList.remove('drag-over');
-    const file = e.dataTransfer.files[0];
-    if (file && file.type.startsWith('image/')) {
-      const fakeEvent = { target: { files: [file] } };
-      handleImageUpload(fakeEvent);
-    }
+  const sorted = [...filled].sort((a,b) => {
+    if (!a.date) return 1; if (!b.date) return -1;
+    const ad = new Date(a.date), bd = new Date(b.date);
+    return (ad.getMonth()*100+ad.getDate()) - (bd.getMonth()*100+bd.getDate());
   });
+  content.innerHTML = `
+    <div class="preview-section-title" style="color:${t.accent}">Your Milestones</div>
+    ${sorted.map(m => `
+      <div class="preview-milestone-row">
+        <span>${m.label || 'Unnamed'}</span>
+        <span style="color:${t.accent};font-weight:500;font-size:0.78rem">${formatDate(m.date)||'—'}</span>
+      </div>`).join('')}`;
+}
 
-  const milestones = [];
-
-  function addMilestone(label = '', date = '') {
-    const id = Date.now();
-    milestones.push({ id, label, date });
-    renderMilestones();
-    updatePreview();
+// ── Purchase ───────────────────────────────────────────────────────────────
+async function handlePurchase() {
+  const name = document.getElementById('ownerName').value;
+  if (!name) {
+    document.getElementById('ownerName').focus();
+    document.getElementById('ownerName').style.borderColor = '#e74c3c';
+    setTimeout(() => document.getElementById('ownerName').style.borderColor = '', 2000);
+    return;
   }
 
-  function removeMilestone(id) {
-    const idx = milestones.findIndex(m => m.id === id);
-    if (idx > -1) milestones.splice(idx, 1);
-    renderMilestones();
-    updatePreview();
-  }
+  const btn = document.querySelector('.btn-generate');
+  btn.textContent = 'Generating your planner…';
+  btn.disabled = true;
 
-  function renderMilestones() {
-    const list = document.getElementById('milestonesList');
-    list.innerHTML = milestones.map(m => `
-      <div class="milestone-entry" id="entry-${m.id}">
-        <input type="text" placeholder="e.g. Mom's Birthday" value="${m.label}"
-          oninput="updateMilestone(${m.id}, 'label', this.value)">
-        <input type="date" value="${m.date}"
-          oninput="updateMilestone(${m.id}, 'date', this.value)">
-        <button class="btn-remove" onclick="removeMilestone(${m.id})">×</button>
-      </div>
-    `).join('');
-  }
+  try {
+    const formData = new FormData();
+    const payload = {
+      name: name,
+      year: parseInt(document.getElementById('plannerYear').value),
+      type: plannerType,
+      size: currentSize,
+      theme: currentTheme,
+      send_email: false,
+      milestones: milestones.map(m => ({ label: m.label, date: m.date }))
+    };
+    formData.append('data', JSON.stringify(payload));
+    if (coverImageFile) formData.append('cover_image', coverImageFile);
 
-  function updateMilestone(id, field, value) {
-    const m = milestones.find(m => m.id === id);
-    if (m) { m[field] = value; updatePreview(); }
-  }
-
-  function formatDate(dateStr) {
-    if (!dateStr) return '';
-    const d = new Date(dateStr + 'T12:00:00');
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-  }
-
-  function updatePreview() {
-    const name = document.getElementById('ownerName').value || 'Your Name Here';
-    const year = document.getElementById('plannerYear').value;
-
-    document.getElementById('preview-name').textContent = name + (name !== 'Your Name Here' ? "'s Year" : '');
-    document.getElementById('preview-year').textContent = year + ' Annual Planner';
-
-    // Apply cover image + overlay
-    const cover = document.getElementById('previewCover');
-    const overlay = document.getElementById('previewOverlay');
-    if (coverImageDataUrl) {
-      cover.style.backgroundImage = `url(${coverImageDataUrl})`;
-      overlay.style.background = overlayStyles[currentOverlay];
-    } else {
-      cover.style.backgroundImage = 'none';
-      cover.style.background = 'var(--ink)';
-      overlay.style.background = 'none';
-    }
-
-    const content = document.getElementById('preview-content');
-    const filled = milestones.filter(m => m.label || m.date);
-
-    if (!filled.length) {
-      content.innerHTML = '<div class="preview-empty">Your milestones will appear here as you add them…</div>';
-      return;
-    }
-
-    // Sort by date
-    const sorted = [...filled].sort((a, b) => {
-      if (!a.date) return 1; if (!b.date) return -1;
-      const aDate = new Date(a.date); const bDate = new Date(b.date);
-      const aMonth = aDate.getMonth() * 100 + aDate.getDate();
-      const bMonth = bDate.getMonth() * 100 + bDate.getDate();
-      return aMonth - bMonth;
+    const response = await fetch('https://the-date-keeper.onrender.com/generate', {
+      method: 'POST',
+      body: formData
     });
 
-    content.innerHTML = `
-      <div class="preview-section-title">Your Milestones</div>
-      ${sorted.map(m => `
-        <div class="preview-milestone-row">
-          <span class="pmr-name">${m.label || 'Unnamed'}</span>
-          <span class="pmr-date">${formatDate(m.date) || '—'}</span>
-        </div>
-      `).join('')}
-    `;
-  }
-
-
-
-  async function handlePurchase() {
-    const name = document.getElementById('ownerName').value;
-    if (!name) {
-      document.getElementById('ownerName').focus();
-      document.getElementById('ownerName').style.borderColor = '#e74c3c';
-      setTimeout(() => document.getElementById('ownerName').style.borderColor = '', 2000);
-      return;
+    if (response.ok) {
+      const blob = await response.blob();
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement('a');
+      a.href     = url;
+      a.download = name.replace(' ','_') + '_' + document.getElementById('plannerYear').value + '_Planner.pdf';
+      a.click();
+      document.getElementById('successOverlay').classList.add('show');
+    } else {
+      alert('Something went wrong — please try again!');
     }
-    const btn = document.querySelector('.btn-generate');
-    btn.textContent = 'Generating your planner…';
-    btn.disabled = true;
-    try {
-      const payload = {
-        name: name,
-        year: parseInt(document.getElementById('plannerYear').value),
-        type: plannerType,
-        send_email: false,
-        milestones: milestones.map(m => ({ label: m.label, date: m.date }))
-      };
-      const response = await fetch('https://the-date-keeper.onrender.com/generate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      if (response.ok) {
-        const blob = await response.blob();
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = name.replace(' ', '_') + '_2026_Planner.pdf';
-        a.click();
-        document.getElementById('successOverlay').classList.add('show');
-      } else {
-        alert('Something went wrong — please try again!');
-      }
-    } catch (err) {
-      alert('Could not connect to server — please try again!');
-    } finally {
-      btn.textContent = 'Get my planner →';
-      btn.disabled = false;
-    }
+  } catch (err) {
+    alert('Could not connect to server — please try again in a moment!');
+  } finally {
+    btn.textContent = 'Get my planner →';
+    btn.disabled = false;
   }
+}
 
-  // Seed with 2 example milestones
-  addMilestone("Mom's Birthday", "2026-03-12");
-  addMilestone("Wedding Anniversary", "2026-09-24");
+// ── Init ───────────────────────────────────────────────────────────────────
+addMilestone("Mom's Birthday", "2026-03-12");
+addMilestone("Wedding Anniversary", "2026-09-24");
+updatePrice();
+updatePreview();
 </script>
 </body>
 </html>
