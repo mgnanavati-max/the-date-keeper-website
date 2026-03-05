@@ -706,3 +706,46 @@ updatePreview();
 </script>
 </body>
 </html>
+
+<!-- CODE GATE -->
+<div id="codeGate" style="display:flex;position:fixed;inset:0;z-index:300;background:rgba(28,25,23,0.75);backdrop-filter:blur(10px);align-items:center;justify-content:center">
+  <div style="background:white;border-radius:24px;padding:48px 40px;max-width:420px;width:90%;text-align:center">
+    <div style="font-size:2.5rem;margin-bottom:16px">🗝️</div>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:10px;color:#1C1917">Enter your access code</h3>
+    <p style="color:#78716C;font-size:.9rem;line-height:1.7;margin-bottom:28px">Purchase on Etsy to receive your unique access code, then enter it below to build your personalized planner.</p>
+    <input id="codeInput" type="text" placeholder="e.g. ABCD1234EF"
+      style="width:100%;padding:14px 16px;border:2px solid #E8E0D8;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:1.1rem;text-align:center;letter-spacing:.1em;text-transform:uppercase;outline:none;margin-bottom:12px"
+      oninput="this.value=this.value.toUpperCase()"
+      onkeydown="if(event.key==='Enter')submitCode()">
+    <div id="codeError" style="color:#C47C7C;font-size:.82rem;margin-bottom:12px;min-height:18px"></div>
+    <button onclick="submitCode()" id="codeBtn"
+      style="width:100%;background:#1C1917;color:white;padding:15px;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;cursor:pointer">Unlock my planner →</button>
+    <p style="margin-top:20px;font-size:.78rem;color:#A8A29E">Don't have a code? <a href="https://etsy.com" target="_blank" style="color:#C8956C">Shop on Etsy →</a></p>
+  </div>
+</div>
+<script>
+async function submitCode() {
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
+  const err = document.getElementById('codeError');
+  const btn = document.getElementById('codeBtn');
+  if (!code) { err.textContent = 'Please enter your code.'; return; }
+  btn.textContent = 'Checking...'; btn.disabled = true; err.textContent = '';
+  try {
+    const r = await fetch('https://the-date-keeper.onrender.com/validate-code', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({code})
+    });
+    const d = await r.json();
+    if (d.valid) {
+      window._accessCode = code;
+      document.getElementById('codeGate').style.display = 'none';
+    } else {
+      err.textContent = d.reason || 'Invalid code — please check and try again.';
+      btn.textContent = 'Unlock my planner →'; btn.disabled = false;
+    }
+  } catch(e) {
+    err.textContent = 'Could not connect — please try again in a moment.';
+    btn.textContent = 'Unlock my planner →'; btn.disabled = false;
+  }
+}
+</script>
