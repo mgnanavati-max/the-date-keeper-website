@@ -392,6 +392,12 @@
         <button class="btn-add" onclick="addMilestone()">+ Add a birthday, anniversary, or milestone</button>
       </div>
 
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Your email <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--accent)">— get a copy in your inbox</span></label>
+        <input type="email" id="customerEmail" placeholder="your@email.com">
+      </div>
+
       <!-- PRICE + CTA -->
       <div class="price-tag">
         <div>
@@ -670,7 +676,7 @@ async function handlePurchase() {
       type: plannerType,
       size: currentSize,
       theme: currentTheme,
-      send_email: false,
+      send_email: true,
       milestones: milestones.map(m => ({ label: m.label, date: m.date }))
     };
     formData.append('data', JSON.stringify(payload));
