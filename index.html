@@ -663,7 +663,9 @@ async function handlePurchase() {
   try {
     const formData = new FormData();
     const payload = {
+      code: window._accessCode || "",
       name: name,
+      email: document.getElementById("customerEmail") ? document.getElementById("customerEmail").value.trim() : "",
       year: parseInt(document.getElementById('plannerYear').value),
       type: plannerType,
       size: currentSize,
