@@ -315,6 +315,12 @@
         </div>
       </div>
 
+      <!-- RIYA INTRO -->
+      <div style="background:var(--accent-light);border-radius:14px;padding:24px 28px;margin-bottom:32px">
+        <p style="font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:8px;font-style:italic">"Every planner here is made just for you."</p>
+        <p style="font-size:.85rem;color:var(--muted);line-height:1.7;margin:0">Hi, I'm Riya — a teenager who built The Date Keeper from scratch alongside my mom. I started this because I wanted a planner that actually felt like mine: my name, my milestones, the dates that matter most to me. I couldn't find one, so I made it. I hope it helps you stay organized around what matters most to you too. <span style="color:var(--accent);font-weight:500">— Riya, founder &amp; maker</span></p>
+      </div>
+
       <!-- PLANNER TYPE -->
       <div class="form-group">
         <label>Planner type</label>
@@ -712,6 +718,63 @@ addMilestone("Wedding Anniversary", "2026-09-24");
 updatePrice();
 updatePreview();
 </script>
+
+<!-- FEEDBACK SECTION -->
+<section style="background:white;border-top:1px solid var(--border);padding:60px 48px;text-align:center">
+  <div style="max-width:520px;margin:0 auto">
+    <p style="font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px">Share your thoughts</p>
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:400;margin-bottom:12px;color:var(--ink)">We're always listening</h3>
+    <p style="font-size:.88rem;color:var(--muted);line-height:1.7;margin-bottom:28px">Have an idea for a new feature? Something we could do better? We're a small team building this one planner at a time — your feedback genuinely shapes what we build next.</p>
+    <textarea id="feedbackText" placeholder="Your idea or feedback..." rows="4"
+      style="width:100%;padding:14px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.9rem;resize:vertical;outline:none;color:var(--ink);background:var(--cream)"></textarea>
+    <button onclick="submitFeedback()"
+      id="feedbackBtn"
+      style="margin-top:12px;background:var(--ink);color:white;padding:13px 32px;border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:500;cursor:pointer;width:100%">
+      Send feedback →
+    </button>
+    <div id="feedbackMsg" style="margin-top:12px;font-size:.82rem;display:none"></div>
+  </div>
+</section>
+
+<script>
+async function submitFeedback() {
+  const text = document.getElementById('feedbackText').value.trim();
+  const btn  = document.getElementById('feedbackBtn');
+  const msg  = document.getElementById('feedbackMsg');
+  if (!text) { 
+    msg.style.display = 'block';
+    msg.style.color = '#C47C7C';
+    msg.textContent = 'Please write something first!';
+    return; 
+  }
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  try {
+    const r = await fetch('https://the-date-keeper.onrender.com/feedback', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({message: text})
+    });
+    const d = await r.json();
+    msg.style.display = 'block';
+    if (d.success) {
+      msg.style.color = '#2D3B2E';
+      msg.textContent = 'Thank you! Riya will read this personally. 💛';
+      document.getElementById('feedbackText').value = '';
+      btn.textContent = 'Send feedback →'; btn.disabled = false;
+    } else {
+      msg.style.color = '#C47C7C';
+      msg.textContent = 'Something went wrong — please try again.';
+      btn.textContent = 'Send feedback →'; btn.disabled = false;
+    }
+  } catch(e) {
+    msg.style.display = 'block';
+    msg.style.color = '#C47C7C';
+    msg.textContent = 'Could not connect — please try again.';
+    btn.textContent = 'Send feedback →'; btn.disabled = false;
+  }
+}
+</script>
+
 </body>
 </html>
 
