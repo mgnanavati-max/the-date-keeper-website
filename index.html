@@ -263,6 +263,20 @@
       <h2>Build your planner</h2>
       <p>Every choice updates your preview in real time.</p>
 
+      <!-- NAME + YEAR -->
+      <div class="form-group">
+        <label>Your name (appears on cover)</label>
+        <input type="text" id="ownerName" placeholder="e.g. Sarah Johnson" oninput="updatePreview()">
+      </div>
+      <div class="form-group">
+        <label>Planner year</label>
+        <select id="plannerYear" onchange="updatePreview()">
+          <option value="2025">2025</option>
+          <option value="2026" selected>2026</option>
+          <option value="2027">2027</option>
+        </select>
+      </div>
+
       <!-- COLOR THEME -->
       <div class="form-group">
         <label>Color theme</label>
@@ -317,19 +331,6 @@
         </div>
       </div>
 
-      <!-- GOALS -->
-      <div class="form-group">
-        <label>Your goals & intentions <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--accent)">— optional, up to 5</span></label>
-        <p style="font-size:.8rem;color:var(--muted);margin-bottom:12px;line-height:1.6">These will appear on a dedicated page at the start of your planner.</p>
-        <div id="goalsContainer">
-          <input type="text" class="goal-input" placeholder="Goal 1 — e.g. Read 12 books this year" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
-          <input type="text" class="goal-input" placeholder="Goal 2 — e.g. Exercise 3x per week" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
-          <input type="text" class="goal-input" placeholder="Goal 3" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
-          <input type="text" class="goal-input" placeholder="Goal 4" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
-          <input type="text" class="goal-input" placeholder="Goal 5" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
-        </div>
-      </div>
-
       <!-- COVER PHOTO -->
       <div class="form-group">
         <label>Cover photo <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--accent)">— optional</span></label>
@@ -369,19 +370,20 @@
         </div>
       </div>
 
-      <!-- NAME + YEAR -->
+
+      <!-- GOALS -->
       <div class="form-group">
-        <label>Your name (appears on cover)</label>
-        <input type="text" id="ownerName" placeholder="e.g. Sarah Johnson" oninput="updatePreview()">
+        <label>Your goals & intentions <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--accent)">— optional, up to 5</span></label>
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:12px;line-height:1.6">These will appear on a dedicated page at the start of your planner.</p>
+        <div id="goalsContainer">
+          <input type="text" class="goal-input" placeholder="Goal 1 — e.g. Read 12 books this year" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 2 — e.g. Exercise 3x per week" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 3" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 4" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 5" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+        </div>
       </div>
-      <div class="form-group">
-        <label>Planner year</label>
-        <select id="plannerYear" onchange="updatePreview()">
-          <option value="2025">2025</option>
-          <option value="2026" selected>2026</option>
-          <option value="2027">2027</option>
-        </select>
-      </div>
+
 
       <!-- MILESTONES -->
       <div class="form-group">
