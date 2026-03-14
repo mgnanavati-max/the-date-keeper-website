@@ -282,32 +282,32 @@
       <div class="form-group">
         <label>Color theme</label>
         <div class="option-grid cols-3" id="themeGrid">
-          <div class="option-card active" onclick="setTheme('terracotta')">
+          <div class="option-card active" onclick="setTheme('terracotta', this)">
             <div class="opt-swatch" style="background:linear-gradient(135deg,#C8956C,#F0DDD0)"></div>
             <div class="opt-title">Terracotta</div>
             <div class="opt-desc">Warm & earthy</div>
           </div>
-          <div class="option-card" onclick="setTheme('sage')">
+          <div class="option-card" onclick="setTheme('sage', this)">
             <div class="opt-swatch" style="background:linear-gradient(135deg,#8A9E8C,#D4E0D5)"></div>
             <div class="opt-title">Sage</div>
             <div class="opt-desc">Soft & natural</div>
           </div>
-          <div class="option-card" onclick="setTheme('navy')">
+          <div class="option-card" onclick="setTheme('navy', this)">
             <div class="opt-swatch" style="background:linear-gradient(135deg,#1B3A5C,#D0DCE8)"></div>
             <div class="opt-title">Navy</div>
             <div class="opt-desc">Classic & bold</div>
           </div>
-          <div class="option-card" onclick="setTheme('blush')">
+          <div class="option-card" onclick="setTheme('blush', this)">
             <div class="opt-swatch" style="background:linear-gradient(135deg,#D4A0A0,#F7E8E8)"></div>
             <div class="opt-title">Blush</div>
             <div class="opt-desc">Soft & romantic</div>
           </div>
-          <div class="option-card" onclick="setTheme('midnight')">
+          <div class="option-card" onclick="setTheme('midnight', this)">
             <div class="opt-swatch" style="background:linear-gradient(135deg,#1a1a2e,#4a4a6a)"></div>
             <div class="opt-title">Midnight</div>
             <div class="opt-desc">Dark & moody</div>
           </div>
-          <div class="option-card" onclick="setTheme('classic')">
+          <div class="option-card" onclick="setTheme('classic', this)">
             <div class="opt-swatch" style="background:linear-gradient(135deg,#1C1917,#E8E0D8)"></div>
             <div class="opt-title">Classic</div>
             <div class="opt-desc">Clean B&W</div>
@@ -486,10 +486,10 @@ const overlayStyles = {
 };
 
 // ── Theme ──────────────────────────────────────────────────────────────────
-function setTheme(theme) {
+function setTheme(theme, el) {
   currentTheme = theme;
-  document.querySelectorAll('#themeGrid .option-card').forEach(el => el.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+  document.querySelectorAll('#themeGrid .option-card').forEach(e => e.classList.remove('active'));
+  if (el) el.classList.add('active');
   applyThemeToPreview();
   updatePrice();
 }
