@@ -247,7 +247,7 @@
     <p>Four steps to a planner that finally feels like yours</p>
   </div>
   <div class="steps">
-    <div class="step"><div class="step-num">1</div><h3>Choose your style</h3><p>Pick your color theme, paper size, and planner format — monthly or full year with weekly spreads.</p></div>
+    <div class="step"><div class="step-num">1</div><h3>Choose your style</h3><p>Pick your color theme, planner format, add your goals and the dates that matter most to you.</p></div>
     <div class="step"><div class="step-num">2</div><h3>Add your dates</h3><p>Enter every birthday, anniversary, and milestone that matters. Add a personal cover photo too.</p></div>
     <div class="step"><div class="step-num">3</div><h3>Preview live</h3><p>Watch your planner come to life in real time as you fill it in. Every choice updates the preview instantly.</p></div>
     <div class="step"><div class="step-num">4</div><h3>Download & print</h3><p>Get a print-ready PDF instantly. Print at home or at your local print shop with 3-hole punch.</p></div>
@@ -300,43 +300,6 @@
         </div>
       </div>
 
-      <!-- PAPER SIZE -->
-      <div class="form-group">
-        <label>Paper size</label>
-        <div class="option-grid cols-2" id="sizeGrid">
-          <div class="option-card" onclick="setSize('pocket')">
-            <div class="opt-title">Pocket</div>
-            <div class="opt-desc">3.2" × 4.7" · Purse-friendly</div>
-            <div class="opt-price" id="price-pocket">from $16</div>
-          </div>
-          <div class="option-card" onclick="setSize('personal')">
-            <div class="opt-title">Personal</div>
-            <div class="opt-desc">3.7" × 6.7" · Filofax size</div>
-            <div class="opt-price" id="price-personal">from $16</div>
-          </div>
-          <div class="option-card" onclick="setSize('a5')">
-            <div class="opt-title">A5</div>
-            <div class="opt-desc">5.8" × 8.3" · Most popular</div>
-            <div class="opt-price" id="price-a5">from $18</div>
-          </div>
-          <div class="option-card active" onclick="setSize('half')">
-            <div class="opt-title">Half Letter</div>
-            <div class="opt-desc">5.5" × 8.5" · Classic binder</div>
-            <div class="opt-price" id="price-half">from $18</div>
-          </div>
-          <div class="option-card" onclick="setSize('letter')">
-            <div class="opt-title">Letter</div>
-            <div class="opt-desc">8.5" × 11" · Standard printer</div>
-            <div class="opt-price" id="price-letter">from $22</div>
-          </div>
-          <div class="option-card" onclick="setSize('a4')">
-            <div class="opt-title">A4</div>
-            <div class="opt-desc">8.3" × 11.7" · European</div>
-            <div class="opt-price" id="price-a4">from $22</div>
-          </div>
-        </div>
-      </div>
-
       <!-- PLANNER TYPE -->
       <div class="form-group">
         <label>Planner type</label>
@@ -351,6 +314,19 @@
             <div class="opt-desc">Monthly + weekly spreads · ~110 pages</div>
             <div class="opt-price" id="price-display-full">$28</div>
           </div>
+        </div>
+      </div>
+
+      <!-- GOALS -->
+      <div class="form-group">
+        <label>Your goals & intentions <span style="font-weight:300;text-transform:none;letter-spacing:0;color:var(--accent)">— optional, up to 5</span></label>
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:12px;line-height:1.6">These will appear on a dedicated page at the start of your planner.</p>
+        <div id="goalsContainer">
+          <input type="text" class="goal-input" placeholder="Goal 1 — e.g. Read 12 books this year" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 2 — e.g. Exercise 3x per week" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 3" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 4" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
+          <input type="text" class="goal-input" placeholder="Goal 5" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.88rem;margin-bottom:8px;background:var(--cream);color:var(--ink);outline:none">
         </div>
       </div>
 
@@ -696,10 +672,11 @@ async function handlePurchase() {
       email: document.getElementById("customerEmail") ? document.getElementById("customerEmail").value.trim() : "",
       year: parseInt(document.getElementById('plannerYear').value),
       type: plannerType,
-      size: currentSize,
+      size: "letter",
       theme: currentTheme,
       send_email: true,
-      milestones: milestones.map(m => ({ label: m.label, date: m.date }))
+      milestones: milestones.map(m => ({ label: m.label, date: m.date })),
+      goals: Array.from(document.querySelectorAll('.goal-input')).map(i => i.value.trim()).filter(v => v)
     };
     formData.append('data', JSON.stringify(payload));
     if (coverImageFile) formData.append('cover_image', coverImageFile);
