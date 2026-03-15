@@ -172,18 +172,35 @@
   .btn-close { background:var(--ink); color:var(--cream); padding:14px 28px; border-radius:100px; border:none; cursor:pointer; font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:500; }
 
   @media(max-width:900px) {
-    .hero { grid-template-columns:1fr; }
+    .hero { grid-template-columns:1fr; min-height:auto; }
     .hero-right { display:none; }
-    .hero-left { padding:60px 32px; }
-    .section, #builder, .testimonials { padding:60px 32px; }
-    .steps { grid-template-columns:1fr; gap:32px; }
-    .builder-grid { grid-template-columns:1fr; }
+    .hero-left { padding:48px 24px 40px; }
+    h1 { font-size:clamp(2rem,8vw,3rem); }
+    .hero-desc { font-size:1rem; margin-bottom:32px; }
+    .section, #builder, .testimonials { padding:48px 24px; }
+    .steps { grid-template-columns:1fr; gap:24px; }
+    .builder-grid { grid-template-columns:1fr; gap:32px; }
     .preview-panel { display:none; }
     .testi-grid { grid-template-columns:1fr; }
-    nav { padding:16px 24px; }
-    footer { padding:32px; flex-direction:column; gap:12px; text-align:center; }
-    .divider { margin:0 32px; }
+    nav { padding:14px 20px; }
+    .nav-links { gap:16px; }
+    .nav-links a:not(.nav-cta) { display:none; }
+    footer { padding:28px 24px; flex-direction:column; gap:12px; text-align:center; }
+    .divider { margin:0 24px; }
     .option-grid.cols-3 { grid-template-columns:1fr 1fr; }
+    .option-grid.cols-2 { grid-template-columns:1fr 1fr; }
+    .form-section h2 { font-size:1.8rem; }
+    .btn-generate { width:100%; padding:16px; font-size:1rem; }
+    .price-tag { flex-direction:column; gap:8px; align-items:flex-start; }
+  }
+  @media(max-width:480px) {
+    .hero-left { padding:40px 20px 32px; }
+    .section, #builder { padding:40px 20px; }
+    .option-grid.cols-3 { grid-template-columns:1fr 1fr; }
+    .option-grid.cols-2 { grid-template-columns:1fr 1fr; }
+    nav { padding:12px 16px; }
+    .logo { font-size:1.2rem; }
+    .hero-actions { flex-direction:column; align-items:flex-start; gap:16px; }
   }
   /* suppress browser autofill icons */
   input::-webkit-contacts-auto-fill-button,
@@ -204,7 +221,7 @@
 
 <!-- HERO -->
 <!-- RIYA INTRO BANNER -->
-<div style="background:var(--accent-light);padding:20px 48px;margin-top:72px;border-bottom:1px solid var(--border);text-align:center">
+<div style="background:var(--accent-light);padding:20px 24px;margin-top:72px;border-bottom:1px solid var(--border);text-align:center">
   <p style="font-size:.88rem;color:var(--ink);line-height:1.7;max-width:700px;margin:0 auto 12px">
     <em style="font-family:'Playfair Display',serif;font-size:1rem">"Every planner here is made just for you."</em>
     &nbsp; Hi, I'm Riya &mdash; a teenager who built The Date Keeper from scratch alongside my mom. I started this because I wanted a planner that felt truly mine. I hope it helps you stay organized around what matters most to you too.
